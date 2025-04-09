@@ -1,69 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre el Proyecto</title>
-    <link rel="stylesheet" href="../assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estimador COCOMO 81</title>
+  <link rel="stylesheet" href="../Assets/css/styles.css">
 </head>
 <body>
-    <header>
-        <h1>Aplicación COCOMO 81</h1>
-        <nav>
-            <ul>
-                <li><a href="../index.html">Inicio</a></li>
-            </ul>
-        </nav>
-    </header>
-    
-    <main>
-        <section>
+  <div class="container">
+    <h1>Estimador de Esfuerzo - COCOMO 81 (Modelo Intermedio)</h1>
 
-            <input type="text" placeholder="Ingresar el tamaño estimado del proyecto en líneas de código fuente (KLOC).">
-            <select name="" id=""> Atributos del producto
-                <option value="">RELY</option>
-                <option value="">DATA</option>
-                <option value="">CPLX</option>
-            </select>
-            <select name="" id="">
-                <option value="">TIME</option>
-                <option value="">STOR</option>
-                <option value="">VIRT</option>
-                <option value="">TURN</option>
-            </select>
-            <select name="" id="">
-                <option value="">ACAP</option>
-                <option value="">AEXP</option>
-                <option value="">PCAP</option>
-                <option value="">VEXP</option>
-                <option value="">LEXP</option>
-            </select>
-            <select name="" id="">
-                <option value="">MODP</option>
-                <option value="">TOOL</option>
-                <option value="">SCED</option>
-            </select>
-            <button>Calcular el esfuerzo en persona-meses</button>
-            <input type="text" placeholder="Ingresar el número de programadores">
-            <input type="text" placeholder="Ingresar la duración deseada en meses">
-            <input type="text" placeholder="Ingresar el sueldo mensual promedio">
-            <button>Estimar el costo total del proyecto</button>
+    <form id="cocomoForm" class="formulario">
 
-        </section>
-        
-        
-        <section>
-            <h2>Equipo de Desarrollo</h2>
-            <p>Integrantes:</p>
-            <ul>
-                <li>Nombre 1</li>
-                <li>Nombre 2</li>
-            </ul>
-            <p>Fecha: [Mes y Año]</p>
-        </section>
-    </main>
-    
-    <footer>
-    </footer>
+      <!-- Tipo de proyecto -->
+      <label for="tipoProyecto">Tipo de proyecto:</label>
+      <select id="tipoProyecto" required>
+        <option value="organico">Orgánico</option>
+        <option value="semiacoplado">Semi-acoplado</option>
+        <option value="empotrado">Empotrado</option>
+      </select>
+
+      <!-- KLOC -->
+      <label for="kloc">Tamaño del proyecto (KLOC):</label>
+      <input type="number" id="kloc" min="1" required>
+
+      <!-- Factores de ajuste (3 de los 15 para ejemplo) -->
+      <h3>Factores de ajuste (1-5):</h3>
+
+      <label for="fi1">Confiabilidad del software (RELY):</label>
+      <select id="fi1">
+        <option value="0.75">Muy bajo</option>
+        <option value="0.88">Bajo</option>
+        <option value="1.00" selected>Nominal</option>
+        <option value="1.15">Alto</option>
+        <option value="1.40">Muy alto</option>
+      </select>
+
+      <label for="fi2">Tamaño de la base de datos (DATA):</label>
+      <select id="fi2">
+        <option value="0.94">Bajo</option>
+        <option value="1.00" selected>Nominal</option>
+        <option value="1.08">Alto</option>
+        <option value="1.16">Muy alto</option>
+      </select>
+
+      <label for="fi3">Complejidad del producto (CPLX):</label>
+      <select id="fi3">
+        <option value="0.70">Muy bajo</option>
+        <option value="0.85">Bajo</option>
+        <option value="1.00" selected>Nominal</option>
+        <option value="1.15">Alto</option>
+        <option value="1.30">Muy alto</option>
+        <option value="1.65">Extra alto</option>
+      </select>
+
+      <!-- Sueldo -->
+      <label for="sueldo">Sueldo mensual promedio (COP):</label>
+      <input type="number" id="sueldo" min="0" required>
+
+      <!-- Opciones de cálculo -->
+      <h3>¿Qué deseas ingresar?</h3>
+
+      <input type="radio" name="opcion" id="ingresarProgramadores" value="programadores" checked>
+      <label for="ingresarProgramadores">Número de programadores</label>
+      <input type="number" id="programadores" min="1">
+
+      <input type="radio" name="opcion" id="ingresarDuracion" value="duracion">
+      <label for="ingresarDuracion">Duración deseada (meses)</label>
+      <input type="number" id="duracion" min="1">
+
+      <button type="submit">Calcular</button>
+    </form>
+
+    <div id="resultados"></div>
+  </div>
+
+  <script src="../Assets/js/cocomo.js"></script>
 </body>
 </html>
