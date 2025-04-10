@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Estimador COCOMO 81</title>
   <link rel="stylesheet" href="../Assets/css/styles.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Estimador de Esfuerzo - COCOMO 81 (Modelo Intermedio)</h1>
@@ -13,6 +15,7 @@
     <form id="cocomoForm" class="formulario">
 
       <!-- Tipo de proyecto -->
+<div class="seleccion1">
       <label for="tipoProyecto">Tipo de proyecto:</label>
       <select id="tipoProyecto" required>
         <option value="organico">Orgánico</option>
@@ -23,10 +26,11 @@
       <!-- KLOC -->
       <label for="kloc">Tamaño del proyecto (KLOC):</label>
       <input type="number" id="kloc" min="1" required>
-
+    </div>
       <!-- Factores de ajuste (3 de los 15 para ejemplo) -->
       <h3>Factores de ajuste (1-5):</h3>
 
+      <div class="seleccion2">
       <label for="fi1">Confiabilidad del software (RELY):</label>
       <select id="fi1">
         <option value="0.75">Muy bajo</option>
@@ -53,6 +57,7 @@
         <option value="1.30">Muy alto</option>
         <option value="1.65">Extra alto</option>
       </select>
+    </div>
 
       <!-- Sueldo -->
       <label for="sueldo">Sueldo mensual promedio (COP):</label>
@@ -61,14 +66,15 @@
       <!-- Opciones de cálculo -->
       <h3>¿Qué deseas ingresar?</h3>
 
-      <input type="radio" name="opcion" id="ingresarProgramadores" value="programadores" checked>
-      <label for="ingresarProgramadores">Número de programadores</label>
-      <input type="number" id="programadores" min="1">
+      <div class="selected">
+        <input type="radio" name="opcion" id="ingresarProgramadores" value="programadores" checked>
+        <label for="ingresarProgramadores">Número de programadores</label>
+        <input type="number" id="programadores" min="1" placeholder="cantidad programadores">
 
-      <input type="radio" name="opcion" id="ingresarDuracion" value="duracion">
-      <label for="ingresarDuracion">Duración deseada (meses)</label>
-      <input type="number" id="duracion" min="1">
-
+        <input type="radio" name="opcion" id="ingresarDuracion" value="duracion">
+        <label for="ingresarDuracion">Duración deseada (meses)</label>
+        <input type="number" id="duracion" min="1" placeholder="cantidad meses">
+      </div>
       <button type="submit">Calcular</button>
     </form>
 
@@ -77,4 +83,5 @@
 
   <script src="../Assets/js/cocomo.js"></script>
 </body>
+
 </html>
