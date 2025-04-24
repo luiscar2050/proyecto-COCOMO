@@ -1,7 +1,6 @@
 document.getElementById("cocomoForm").addEventListener("submit", function (e) {
     e.preventDefault();
   
-    // Entradas
     const tipo = document.getElementById("tipoProyecto").value;
     const kloc = parseFloat(document.getElementById("kloc").value);
     const sueldo = parseFloat(document.getElementById("sueldo").value);
@@ -13,7 +12,6 @@ document.getElementById("cocomoForm").addEventListener("submit", function (e) {
     const programadores = parseFloat(document.getElementById("programadores").value);
     const duracion = parseFloat(document.getElementById("duracion").value);
   
-    // Constantes por tipo de proyecto
     const coeficientes = {
       organico: { a: 3.2, b: 1.05 },
       semiacoplado: { a: 3.0, b: 1.12 },
@@ -22,13 +20,10 @@ document.getElementById("cocomoForm").addEventListener("submit", function (e) {
   
     const { a, b } = coeficientes[tipo];
   
-    // EAF = producto de los factores de ajuste
-    const EAF = fi1 * fi2 * fi3; // cuando uses los 15, multiplícalos todos
+    const EAF = fi1 * fi2 * fi3;
   
-    // Esfuerzo en persona-meses
     const esfuerzo = a * Math.pow(kloc, b) * EAF;
   
-    // Duración y tamaño del equipo
     let duracionMeses = 0;
     let equipo = 0;
   
